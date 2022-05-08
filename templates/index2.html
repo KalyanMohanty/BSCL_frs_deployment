@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <style>
+            .body{
+                background-color: azure;
+                background-image: url('C:/Users/kalya_kl8c3da/Downloads/bck.jpg');
+                background-size: cover;
+            }
+            .header{
+                align-items: center;
+                text-align: center;
+                text-justify: auto;
+            }
+            ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				background-color: #333;
+			}
+				
+				li {
+				float: left;
+			}
+				
+				li a {
+				display: inline-block;
+				color: white;
+				text-align: center;
+				padding: 14px 16px;
+				text-decoration: none;
+			}
+				
+				li a:hover {
+				background-color: #111;
+			}
+				
+				.active {
+				background-color: red;
+			}
+            .button{
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+    </head>
+    <body class = "body" >
+        <div class = 'header'>
+            <h1>Smart Face Recognition System</h1>
+        </div>
+        <ul>
+            <li><a href="/home" class="active">Home</a></li>
+            <li><a href='/image_upload'>Add Facial Image</a></li>
+            <li><a href="/video_feed">Face Recognition</a></li>
+          </ul>
+            
+        <div>
+            <h1>Background</h1>
+            <p><b>A facial recognition system is a technology capable of matching a 
+                human face from a digital image or a video frame against a database of faces, 
+                typically employed to authenticate users through ID verification services,
+                 works by pinpointing and measuring facial features from a given image.</b></p>
+                 <img align = 'center' src="static/face2.jpg" alt="FRS" width="1280" height="500">     
+            <h1>Two Steps to follow</h1>
+            <p><b>
+                <ol>
+                    <li>Upoad Person's Image by clicking "Add Facial Image".</li><br>
+                    <li>Follow the Instruction to upload the image. </li><br>
+                </ol>
+                  <h3>    Now it's ready for Recognition.</h3>  
+            </b></p>
+            
+        </div>  
+    </body>
+    <script>
+        $("#file-picker1").change(function(){
+    
+            var input = document.getElementById('file-picker');
+    
+            for (var i=0; i<input.files.length; i++)
+            {
+                var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+    
+                if ((ext == 'jpg') || (ext == 'png')|| (ext == 'jpeg'))
+                {
+                    $("#msg").text("Files are supported")
+                }
+                else
+                {
+                    $("#msg").text("Files are NOT supported")
+                    document.getElementById("file-picker").value ="";
+                }
+            }
+    
+        } );
+    </script>
+    <script>
+        $("#file-picker2").change(function(){
+    
+            var input = document.getElementById('file-picker');
+    
+            for (var i=0; i<input.files.length; i++)
+            {
+                var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+    
+                if (ext=='pdf')
+                {
+                    $("#msg").text("Files are supported")
+                }
+                else
+                {
+                    $("#msg").text("Files are NOT supported")
+                    document.getElementById("file-picker").value ="";
+                }
+            }
+    
+        } );
+    </script>
+</html>

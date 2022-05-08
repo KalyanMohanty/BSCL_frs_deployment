@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .body{
+        background-color: azure;
+        /*background-image: url('static/face.jpg'); */
+    }
+    .header{
+                align-items: center;
+                text-align: center;
+                text-justify: auto;
+            }
+    .bgimg {
+                background-image: url('img_girl.jpg' );
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+}
+</style>
+<title>image_upload</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body class = "body">
+<!-- <img src="C:/Users/kalya_kl8c3da/Documents/GitHub/Flask_api_test/static/fresh-apple.jpg" alt="background" width="100" height="100"> -->
+<div>
+    <div class = "header">
+        <h1>Add Face Image</h1>
+    </div><br>
+    <div align = "auto">
+        <strong>Upload Image:</strong><br><br>
+        <p><b><h5>Instructions for upload an image: </h5></b></p>
+        <li>Supported Image files are '.jpg' or '.png'</li>
+        <li> Person's face should be clearly visible.</li>
+        <li>The Name of the image file should be  renamed as per the person name. e.g. Abhishek Sharma</li>
+        <li>Browse your image and click on upload.</li>
+        <br>
+    <form id="upload-form" action="{{ url_for('image_upload') }}" method="POST" enctype="multipart/form-data">
+        <input id="file-picker1" type="file" name="file" accept="image/*" multiple>
+        <div id="msg"></div><br>
+        <input type="submit" value="Upload Image!" id="upload-button">
+    </form>
+</div>
+</div>
+</body>
+<script>
+    $("#file-picker1").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png')|| (ext == 'jpeg'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+        }
+
+    } );
+</script>
+<script>
+    $("#file-picker2").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if (ext=='pdf')
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+        }
+
+    } );
+</script>
+</html>
+
+
+
+
+
+
+
